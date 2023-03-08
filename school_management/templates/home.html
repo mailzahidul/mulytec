@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="row">
+             <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon bg-2">
+                               <i class="fas fa-sliders-h"></i>
+                            </span>
+                            <div class="dash-count">
+                                <div class="dash-title">Slider</div>
+                                <div class="dash-counts">
+                                    <p>({{slider_count}})</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon bg-3">
+                            <i class="fa fa-th-large"></i>
+                            </span>
+                            <div class="dash-count">
+                                <div class="dash-title">Category</div>
+                                <div class="dash-counts">
+                                    <p>({{category_count}})</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon bg-1">
+                            <i class="fa fa-box-open"></i>
+                            </span>
+                            <div class="dash-count">
+                                <div class="dash-title">Product</div>
+                                <div class="dash-counts">
+                                    <p>({{product_count}})</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="dash-widget-header">
+                            <span class="dash-widget-icon bg-4">
+                            <i class="fas fa-cube"></i>
+                            </span>
+                            <div class="dash-count">
+                                <div class="dash-title">Orders</div>
+                                <div class="dash-counts">
+                                    <p>({{order_count}})</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
