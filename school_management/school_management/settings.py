@@ -73,17 +73,29 @@ WSGI_APPLICATION = 'school_management.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-DATABASES = {
-       'default': {
-           'ENGINE': 'djongo',
-           'NAME': 'school_management_db',
-           'ENFORCE_SCHEMA': False,
-            'CLIENT': {
-                'host': 'mongodb+srv://babazahidul:uiL09ZIjDE6Env3I@cluster0.a3hncsp.mongodb.net/?retryWrites=true&w=majority'
-            }
-       }
-   }
+DATABASE = {
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': 'school_management_db',
+        'CLIENT': {
+            'host': 'mongodb://mongodb:27017',
+            'username': 'babazahidul',
+            'password': 'uiL09ZIjDE6Env3I',
+            'authSource': 'admin',
+            'authMechanism': 'SCRAM-SHA-1',
+        }
+    }
+}
+# DATABASES = {
+#        'default': {
+#            'ENGINE': 'djongo',
+#            'NAME': 'school_management_db',
+#            'ENFORCE_SCHEMA': False,
+#             'CLIENT': {
+#                 'host': 'mongodb+srv://babazahidul:uiL09ZIjDE6Env3I@cluster0.a3hncsp.mongodb.net/?retryWrites=true&w=majority'
+#             }
+#        }
+#    }
 
 
 # Password validation

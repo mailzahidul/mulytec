@@ -4,13 +4,13 @@
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="row">
-             <div class="col-xl-3 col-sm-6 col-12">
+            <div class="col-xl-3 col-sm-6 col-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="dash-widget-header">
-                            <span class="dash-widget-icon bg-2">
-                               <i class="fas fa-sliders-h"></i>
-                            </span>
+                                <span class="dash-widget-icon bg-2">
+                                   <i class="fas fa-sliders-h"></i>
+                                </span>
                             <div class="dash-count">
                                 <div class="dash-title">Slider</div>
                                 <div class="dash-counts">
@@ -25,9 +25,9 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="dash-widget-header">
-                            <span class="dash-widget-icon bg-3">
-                            <i class="fa fa-th-large"></i>
-                            </span>
+                                <span class="dash-widget-icon bg-3">
+                                <i class="fa fa-th-large"></i>
+                                </span>
                             <div class="dash-count">
                                 <div class="dash-title">Category</div>
                                 <div class="dash-counts">
@@ -42,9 +42,9 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="dash-widget-header">
-                            <span class="dash-widget-icon bg-1">
-                            <i class="fa fa-box-open"></i>
-                            </span>
+                                <span class="dash-widget-icon bg-1">
+                                <i class="fa fa-box-open"></i>
+                                </span>
                             <div class="dash-count">
                                 <div class="dash-title">Product</div>
                                 <div class="dash-counts">
@@ -60,9 +60,9 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="dash-widget-header">
-                            <span class="dash-widget-icon bg-4">
-                            <i class="fas fa-cube"></i>
-                            </span>
+                                <span class="dash-widget-icon bg-4">
+                                <i class="fas fa-cube"></i>
+                                </span>
                             <div class="dash-count">
                                 <div class="dash-title">Orders</div>
                                 <div class="dash-counts">
@@ -74,6 +74,136 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="row">
+            <div class="col-sm-6">
+                <canvas id="myChart1" width="300" height="200"></canvas>
+                <div>
+
+                    <script type="text/javascript">
+            var ctx = document.getElementById('myChart1').getContext('2d');
+            var myChart1 = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: [{% for gender in gender_list %} '{{ gender }}', {% endfor %}],
+                    datasets: [{
+                        label:'Gender',
+                        data: [{% for number in gender_number %} '{{ number }}', {% endfor %}],
+                        backgroundColor:[
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 135, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(151, 102, 132, 1)',
+                        'rgba(153, 99, 132, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 135, 1)',
+                        'rgba(25, 206, 86, 1)',
+                        'rgba(211, 192, 192, 1)',
+                        'rgba(234, 102, 132, 1)',
+                        'rgba(153, 99, 132, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'gree',
+                        'yellow',
+                        ],
+
+                        borderColor: [
+                        'rgba(54, 162, 135, 1)',
+                        'rgba(25, 206, 86, 1)',
+                        'rgba(211, 192, 192, 1)',
+                        'rgba(234, 102, 132, 1)',
+                        'rgba(153, 99, 132, 1)',
+                        'rgba(255, 159, 64, 1)',
+
+                        ],
+
+                        borderWidth: 1
+                    }]
+                },
+
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            })
+
+                    </script>
+                </div>
+            </div>
+
+
+            <div class="col-sm-6">
+                <canvas id="myChart" width="300" height="200"></canvas>
+                <div>
+
+                    <script type="text/javascript">
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [{% for course in course_list %} '{{ course }}', {% endfor %}],
+                    datasets: [{
+                        label:'Student',
+                        data: [{% for number in number_list %} '{{ number }}', {% endfor %}],
+                        backgroundColor:[
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 135, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(151, 102, 132, 1)',
+                        'rgba(153, 99, 132, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 135, 1)',
+                        'rgba(25, 206, 86, 1)',
+                        'rgba(211, 192, 192, 1)',
+                        'rgba(234, 102, 132, 1)',
+                        'rgba(153, 99, 132, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'gree',
+                        'yellow',
+                        ],
+
+                        borderColor: [
+                        'rgba(54, 162, 135, 1)',
+                        'rgba(25, 206, 86, 1)',
+                        'rgba(211, 192, 192, 1)',
+                        'rgba(234, 102, 132, 1)',
+                        'rgba(153, 99, 132, 1)',
+                        'rgba(255, 159, 64, 1)',
+
+                        ],
+
+                        borderWidth: 1
+                    }]
+                },
+
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            })
+
+                    </script>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </div>
+
+
 {% endblock %}

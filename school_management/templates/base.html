@@ -1,6 +1,8 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, user-scalable=0" name="viewport">
@@ -11,8 +13,19 @@
     <link rel="stylesheet" href="{% static '' %}plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="{% static '' %}plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="{% static '' %}plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="{% static '' %}plugins/datatables/datatables.min.css">
     <link rel="stylesheet" href="{% static '' %}css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="{% static '' %}css/style.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"/>
+    <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <link href="{% static 'vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
+    <script src="{% static 'vendor/Chart.js' %}"></script>
+    <script src="{% static 'vendor/Chart.min.js' %}"></script>
+
+
 </head>
 <body class="nk-body bg-lighter npc-default has-sidebar no-touch nk-nio-theme">
 
