@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from.models import *
 # Create your views here.
 
 def home(request):
@@ -13,4 +13,17 @@ def home(request):
     number_list=[20,30,40,50]
     context['course_list']=course_list
     context['number_list']=number_list
+
+    students=Student.objects.all().count()
+    context['total_students']=students
+
     return render(request, 'home.html', context)
+
+
+
+def students(request):
+    context={}
+    student_list=Student.objects.all()
+    context['student_list']=student_list
+    print(student_list,'---')
+    return render(request, 'students.html', context)
