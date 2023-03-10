@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="page-title">Students</h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{%url 'home' %}">Dashboard</a>
+                            </li>
+                            <li class="breadcrumb-item active">Students</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+              <div class="row">
+                <div class="col-xl-12 col-md-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h5 class="card-title">Student Info</h5>
+                    </div>
+                    <div class="card-body">
+                      <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                        <div class="row mt-5">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label>Name</label>
+                              <input
+                                type="text"
+                                name="name"
+                                class="form-control"
+                                value=""
+                                required
+                              />
+                            </div>
+                            <div class="form-group">
+                              <label>Phone</label>
+                              <input type="number" name="phone" class="form-control" value="" required />
+                            </div>
+
+                            <div class="form-group">
+                              <label>Address</label>
+                              <textarea id="address"
+                                name="address"
+                                class="form-control"
+                                rows="5" required
+                              ></textarea>
+                            </div>
+
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label>Father Name:</label>
+                              <input type="text" name="father_name" class="form-control" value="" required />
+                            </div>
+                            <div class="form-group">
+                              <label>Class</label>
+                              <select class="select" name="class_name">
+                                <option class="form-control" value="0" selected>Select Class</option>
+                                {% for class in class_list %}
+                                <option class="form-control" value="{{ class.id }}">
+                                  {{class.name }}
+                                </option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <label>Roll:</label>
+                              <input type="number" name="roll" class="form-control" value="" required />
+                            </div>
+                            <div class="form-group">
+                              <label>Is Active</label>
+                              <label
+                                class="row form-group toggle-switch"
+                                for="notification_switch1"
+                              >
+                                <span class="col-4 col-sm-3">
+                                  <input
+                                    type="checkbox"
+                                    value="1"
+                                    checked
+                                    class="toggle-switch-input"
+                                    name="is_active"
+                                    id="notification_switch1"
+                                  />
+                                  <span
+                                    class="toggle-switch-label ms-auto"
+                                    onclick="setCheckboxValue()"
+                                  >
+                                    <span class="toggle-switch-indicator"></span>
+                                  </span>
+                                </span>
+                              </label>
+                            </div>
+                          </div>
+
+
+                        </div>
+
+                        <div class="text-right">
+                          <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+    </div>
+</div>
+
+<script>
+
+function setCheckboxValue() {
+    if (document.getElementById('notification_switch1').checked) {
+        document.getElementById('notification_switch1').setAttribute("value", "0");
+    } else {
+        document.getElementById('notification_switch1').setAttribute("value", "1");
+    }
+}
+</script>
+{% endblock %}

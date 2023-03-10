@@ -4,4 +4,7 @@ from .models import *
 
 admin.site.register(Subject)
 admin.site.register(Class)
-admin.site.register(Student)
+
+class StudentAdmin(admin.ModelAdmin):
+    list_display = ['name', 'roll', 'is_active']
+admin.site.register(Student, StudentAdmin)

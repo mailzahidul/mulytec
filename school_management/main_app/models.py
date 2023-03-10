@@ -26,6 +26,7 @@ class Student(models.Model):
     father_name = models.CharField(max_length=100)
     phone = models.IntegerField()
     address = models.TextField()
+    roll = models.SmallIntegerField()
     class_name = models.ForeignKey(Class, on_delete=models.SET_NULL, null=True)
     is_active = models.BooleanField(default=True)
 
