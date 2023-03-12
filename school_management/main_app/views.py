@@ -1,5 +1,8 @@
 from django.db.models import Q
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
+from django.urls import reverse
+
 from.models import *
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
@@ -112,8 +115,26 @@ def class_subject(request):
         if subject_obj in class_obj.subjects.all():
             context['class_obj'] = class_obj
             context['subject_obj'] = subject_obj
-            context['classwise_students'] = Student.objects.filter(class_name=class_obj)
-            # print(classwise_students,"Yes")
+            classwise_students=Student.objects.filter(class_name=class_obj)
+            context['classwise_students'] = classwise_students
+
+
+
+
+            # subject_obj = get_object_or_404(Subject, id=subject_id)
+            # class_obj = get_object_or_404(Class, id=class_id)
+            student_obj = get_object_or_404(Student, id=1)
+            student_subjects=student_obj.class_name.subjects.all()
+            class_ob = get_object_or_404(Class, id=class_id)
+            for i in class_ob.subjects.all():
+                if subject_obj == i:
+                    class_ob.subjects.add(subject_obj)
+                print(i.full_mark)
+
+
+
+
+            # return HttpResponseRedirect(reverse('main_app:subject_marks_input', kwargs={'class_obj': class_obj, 'subject_obj':subject_obj}))
             return render(request, 'subject_marks_input.html', context)
         else:
             messages.error(request, "There is no subject on this class")
@@ -124,4 +145,7 @@ def class_subject(request):
 
 def subject_marks_input(request):
     context={}
+    cls = Class.objects.get(name='Eight')
+    print(cls,'---')
+    # obj = Student.obejcts.get()
     return render(request, 'subject_marks_input.html', context)

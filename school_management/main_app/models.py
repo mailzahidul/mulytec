@@ -30,5 +30,8 @@ class Student(models.Model):
     class_name = models.ForeignKey(Class, on_delete=models.SET_NULL, null=True)
     is_active = models.BooleanField(default=True)
 
+    class Meta:
+        unique_together = ('class_name', 'roll',)
+
     def __str__(self):
         return self.name
