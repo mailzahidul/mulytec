@@ -6,8 +6,6 @@ from django.db import models
 class Subject(models.Model):
     name = models.CharField(max_length=50)
     mark = models.IntegerField(null=True, blank=True)
-    full_mark = models.IntegerField(default=100,null=True, blank=True)
-    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name
@@ -19,6 +17,14 @@ class Class(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ClassSubject(models.Model):
+    class_name = models.ForeignKey(Class, on_delete=models.SET_NULL, null=True)
+    subject_name = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return f'{self.class_name.name}-{self.subject_name.name}'
 
 
 class Student(models.Model):

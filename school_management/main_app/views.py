@@ -121,15 +121,15 @@ def class_subject(request):
 
 
 
-            # subject_obj = get_object_or_404(Subject, id=subject_id)
-            # class_obj = get_object_or_404(Class, id=class_id)
-            student_obj = get_object_or_404(Student, id=1)
-            student_subjects=student_obj.class_name.subjects.all()
+
+
+            subject_obj = get_object_or_404(Subject, id=subject_id)
             class_ob = get_object_or_404(Class, id=class_id)
-            for i in class_ob.subjects.all():
-                if subject_obj == i:
-                    class_ob.subjects.add(subject_obj)
-                print(i.full_mark)
+            classwise_subject=class_ob.subjects.all()
+            for sub in classwise_subject:
+                if sub == subject_obj:
+                    sub.mark(10)
+
 
 
 
