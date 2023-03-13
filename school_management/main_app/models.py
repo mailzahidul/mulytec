@@ -2,6 +2,26 @@ from django.db import models
 
 # Create your models here.
 
+Subject_list=(
+    ('bangla','Bangla'),
+    ('english','English'),
+    ('mathematics','Mathematics'),
+    ('computer','Computer'),
+)
+
+Class_list=(
+    ('one','One'),
+    ('two','Two'),
+    ('three','Three'),
+    ('four','Four'),
+    ('five','Five'),
+    ('six','Six'),
+    ('seven','Seven'),
+    ('eight','Eight'),
+    ('nine','Nine'),
+    ('tem','Ten'),
+)
+
 
 class Subject(models.Model):
     name = models.CharField(max_length=50)
@@ -13,7 +33,6 @@ class Subject(models.Model):
 
 class Class(models.Model):
     name = models.CharField(max_length=30)
-    subjects = models.ManyToManyField(Subject, blank=True)
 
     def __str__(self):
         return self.name
@@ -33,7 +52,7 @@ class Student(models.Model):
     phone = models.IntegerField()
     address = models.TextField()
     roll = models.SmallIntegerField()
-    class_name = models.ForeignKey(Class, on_delete=models.SET_NULL, null=True)
+    class_name = models.ForeignKey(ClassSubject, on_delete=models.SET_NULL, null=True)
     is_active = models.BooleanField(default=True)
 
     class Meta:
