@@ -30,8 +30,12 @@ def home(request):
     context['course_list']=course_list
     context['number_list']=number_list
 
-    students=Student.objects.all().count()
-    context['total_students']=students
+    cls = Class.objects.get(id=1).subjects.all()
+    pnt = cls
+
+    print(cls,'--')
+
+
 
     return render(request, 'home.html', context)
 
@@ -112,7 +116,7 @@ def class_subject(request):
         subject_id = int(request.GET.get('subject_id'))
         class_obj = Class.objects.get(id=class_id)
         subject_obj = Subject.objects.get(id=subject_id)
-        if subject_obj in class_obj.subjects.all():
+        if subject_obj not in class_obj.subjects.all():
             context['class_obj'] = class_obj
             context['subject_obj'] = subject_obj
             classwise_students=Student.objects.filter(class_name=class_obj)
@@ -121,13 +125,13 @@ def class_subject(request):
 
 
 
-            # subject_obj = get_object_or_404(Subject, id=subject_id)
+            subject_obj = get_object_or_404(Subject, id=subject_id, mark=12, full_mark=100, is_active=True)
             # class_obj = get_object_or_404(Class, id=class_id)
             student_obj = get_object_or_404(Student, id=1)
             student_subjects=student_obj.class_name.subjects.all()
             class_ob = get_object_or_404(Class, id=class_id)
             for i in class_ob.subjects.all():
-                if subject_obj == i:
+                if subject_obj != i:
                     class_ob.subjects.add(subject_obj)
                 print(i.full_mark)
 
